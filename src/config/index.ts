@@ -4,22 +4,22 @@ interface config {
     mockApi?:string |any
 }
 interface EnvConfigProps { 
-    dev: config,
+    development: config,
     test: config,
-    prod:config
+    product:config
 }
 const EnvConfig:EnvConfigProps = {
-    dev: {
+    development: {
         baseApi: "",
-        mockApi:""
+        mockApi:"https://www.fastmock.site/mock/8528cba4c03b541c9f3f889404238370/api"
     },
     test: {
         baseApi: "",
-        mockApi:""
+        mockApi:"https://www.fastmock.site/mock/8528cba4c03b541c9f3f889404238370/api"
     },
-    prod: {
+    product: {
         baseApi: "",
-        mockApi:""
+        mockApi:"https://www.fastmock.site/mock/8528cba4c03b541c9f3f889404238370/api"
     }
 } 
 export default {

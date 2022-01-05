@@ -22,11 +22,12 @@ const service = axios.create({
 
 //请求拦截
 service.interceptors.request.use((req) => { 
-    const headers:headerProps  = req.headers;
-    if (headers.Authorization) { 
-        headers.Authorization = 'bell';
-        return req;
-    }
+    // const headers:headerProps  = req.headers;
+    // if (headers.Authorization) {
+    //     headers.Authorization = 'bell';
+    //     return req;
+    // }
+    return req;
 })
 //响应拦截
 service.interceptors.response.use(res => { 
@@ -38,7 +39,7 @@ service.interceptors.response.use(res => {
         ElMessage.error(TOKEN_INVALID);
         //跳到登录页面
         setTimeout(() => {
-            router.push()
+            // router.push()
         }, 15000)
         return Promise.reject(TOKEN_INVALID)
     } else { 
@@ -47,7 +48,7 @@ service.interceptors.response.use(res => {
     }
 })
 //封装请求核心函数
-function request(options:requestProps |any) { 
+function request(options: requestProps | any) { 
     options.method = options.method || 'get'
     if (options.method.toLowerCase() === 'get') {
         options.params = options.data;
@@ -59,7 +60,7 @@ function request(options:requestProps |any) {
     if (config.env === 'prod') {
         service.defaults.baseURL = config.baseApi
     } else {
-        service.defaults.baseURL = isMock ? config.mockApi : config.baseApi
+        service.defaults.baseURL = isMock ? config.mockApi : config.baseApi;
     }
 
     return service(options)
