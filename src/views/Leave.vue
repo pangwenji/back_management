@@ -255,7 +255,7 @@ export default {
             reasons: [
                 {
                     required: true,
-                    message: "请输入休假原因",
+                    message: "请输入休假原因", 
                     trigger: ["change", "blur"],
                 },
             ],
