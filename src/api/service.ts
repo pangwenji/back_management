@@ -1,15 +1,17 @@
+import { AxiosPromise } from 'axios';
 import request from '../utils/request';
 
-class Service { 
+class Service {
+    static getPermissionList(): { menuList: any; } | PromiseLike<{ menuList: any; }> {
+        throw new Error("Method not implemented.");
+    }
     //get方法请求
-    getMethod(params) { 
+    getMethod(params: string): AxiosPromise<any> {
         return request(params)
     }
     //post方法请求
-    postMethod(params) { 
-       return request(params)
+    postMethod(params: string): AxiosPromise<any> {
+        return request(params)
     }
 }
-export { 
-    Service
-}
+export default Service

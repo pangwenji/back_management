@@ -1,3 +1,3 @@
- export enum StoreTypes{ 
-    namespace='MANAGE'
+export enum StoreTypes {
+    namespace = 'MANAGE'
 }

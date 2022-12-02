@@ -1,8 +1,8 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import Home from "@/components/Home.vue";
-import storage from "./utils/";
-import API from "./../api";
-import utils from "./../utils/utils";
+import storage from "@/utils/storage";
+import API from "@/api/service";
+// import utils from "./../utils/utils";
 
 const routes = [
     {
@@ -20,7 +20,7 @@ const routes = [
                 meta: {
                     title: "欢迎体验Vue3全栈课程",
                 },
-                component: () => import("@/views/Welcome.vue"),
+                component: () => import("@/views/PlanceGeometry.vue"),
             },
         ],
     },
@@ -47,19 +47,20 @@ const router = createRouter({
 });
 
 async function loadAsyncRoutes() {
-    let userInfo = storage.getItem("userInfo") || {};
-    if (userInfo.token) {
-        try {
-            const { menuList } = await API.getPermissionList();
-            console.log(menuList, "列表");
-            let routes = utils.generateRoute(menuList);
-            // routes.map(route => {
-            //     let url = `./../views/${route.component}.vue`
-            //     route.component = () => import(url);
-            //     router.addRoute("home", route);
-            // })
-        } catch (error) {}
-    }
+    // let userInfo = storage.getItem("userInfo") || {};
+    // let userInfo = storage.
+    // if (userInfo.token) {
+    //     try {
+    //         const { menuList } = await API.getPermissionList();
+    //         console.log(menuList, "列表");
+    //         let routes = utils.generateRoute(menuList);
+    //         // routes.map(route => {
+    //         //     let url = `./../views/${route.component}.vue`
+    //         //     route.component = () => import(url);
+    //         //     router.addRoute("home", route);
+    //         // })
+    //     } catch (error) { }
+    // }
 }
 await loadAsyncRoutes();
 // 判断当前地址是否可以访问
@@ -74,13 +75,13 @@ function checkPermission(path) {
 }
 */
 // 导航守卫
-router.beforeEach((to, from, next) => {
-    if (router.hasRoute(to.name)) {
-        document.title = to.meta.title;
-        next();
-    } else {
-        next("/404");
-    }
-});
+// router.beforeEach((to, from, next) => {
+//     if (router.hasRoute(to.name)) {
+//         document.title = to.meta.title;
+//         next();
+//     } else {
+//         next("/404");
+//     }
+// });
 
 export default router;
